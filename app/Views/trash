@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Welcome, <?= session()->get('name') ?>!</h2>
+    <a href="<?= base_url('/logout') ?>">Logout</a>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos voluptates aliquam quaerat, velit sequi tenetur impedit optio. Maiores aspernatur magnam quos quis iusto dicta eaque voluptates explicabo ipsum sed.</p>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .desktop-label {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            background-color: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .search-bar input {
+            padding: 8px;
+            width: 300px;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            width: 200px;
+            height: calc(100vh - 130px);
+            float: left;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #2c3e50;
+            cursor: pointer;
+        }
+        
+        .sidebar li:hover {
+            background-color: #2c3e50;
+        }
+        
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 130px);
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .action-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            width: 200px;
+        }
+        
+        .action-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop-label">Desktop - 3</div>
+    
+    <div class="header">APPOINTMENT MANAGEMENT SYSTEM</div>
+    
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+    </div>
+    
+    <div class="sidebar">
+        <ul>
+            <li>HOME</li>
+            <li>Appointments</li>
+            <li>Schedules</li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="action-buttons">
+            <button class="action-button">Make Appointments</button>
+            <button class="action-button">View Schedules</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+<button href="makeAppointment.php"class="action-button">Make Appointments</button>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule an Appointment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .appointment-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            padding: 30px;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .date-display {
+            background-color: #f0f3f7;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .time-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .time-option {
+            background-color: #f0f3f7;
+            border-radius: 6px;
+            padding: 12px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .time-option:hover {
+            background-color: #e0e5eb;
+        }
+        
+        .time-option.selected {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .schedule-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-transform: uppercase;
+        }
+        
+        .schedule-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="appointment-container">
+        <div class="title">Schedule an Appointment</div>
+        
+        <div class="section-title">Choose date</div>
+        <div class="date-display">October 29, 2018</div>
+        
+        <div class="section-title">Choose time</div>
+        <div class="time-options">
+            <div class="time-option">8:00 AM</div>
+            <div class="time-option selected">2:00 PM</div>
+            <div class="time-option">9:00 PM</div>
+        </div>
+        
+        <button class="schedule-button">Schedule</button>
+    </div>
+
+    <script>
+        // Add interactive time selection
+        document.querySelectorAll('.time-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.time-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+<td><?= ucfirst(esc($appt['appointment_day'])) ?></td>
+
+<label for="day">Choose an option:</label>
+        <select id="day" name="day" required>
+            <option value="monday">MONDAY</option>
+            <option value="tuesday">TUESDAY</option>
+            <option value="wednesday">WEDNESDAY</option>
+            <option value="thursday">THURSDAY</option>
+            <option value="friday">FRIDAY</option>
+        </select>
+        <br>
+
